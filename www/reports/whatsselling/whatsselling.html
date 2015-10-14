@@ -1,0 +1,18 @@
+<ion-view view-title="What's Selling">
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                <img src="../img/shop.png">
+                <h2>What's Selling</h2>
+                <div class="item tabs tabs-secondary tabs-icon-left">
+                    <a class="tab-item" href="#" ng-click="reload('daily')">Daily</a>
+                    <a class="tab-item" href="#" ng-click="reload('weekly')">Weekly</a>
+                    <a class="tab-item" href="#" ng-click="reload('monthly')">Monthly</a>
+                </div>
+            </div>
+        </div>
+        <div class="padding">
+            <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" legend="true" chart-series="series"></canvas>
+        </div>
+    </ion-content>
+</ion-view>

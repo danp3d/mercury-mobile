@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'chart.js'])
 
 .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -123,6 +123,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                             return monitorSvc.getMonitor($stateParams.storeID);
                         }
                     }
+                }
+            }
+        })
+
+    .state('tab.report', {
+            url: '/report',
+            abstract: true,
+            views: {
+                'tab-report': {
+                    templateUrl: 'reports/report.html'
+                }
+            }
+        })
+        .state('tab.report.list', {
+            url: '/list',
+            views: {
+                'tab-report-inception': {
+                    templateUrl: 'reports/report-list.html'
+                }
+            }
+        })
+        .state('tab.report.whatsselling', {
+            url: '/whatsselling',
+            views: {
+                'tab-report-inception': {
+                    templateUrl: 'reports/whatsselling/whatsselling.html',
+                    controller: 'whatsSellingCtrl'
                 }
             }
         })

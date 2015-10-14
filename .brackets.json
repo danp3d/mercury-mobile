@@ -1,0 +1,14 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/daniel/Development/mercury/www/monitor/monitor.ctrl.js",
+        "/home/daniel/Development/mercury/www/lib/angular-animate/index.js",
+        "/home/daniel/Development/mercury/www/lib/angular-animate/angular-animate.js",
+        "/home/daniel/Development/mercury/www/lib/angular-sanitize/angular-sanitize.min.js",
+        "/home/daniel/Development/mercury/www/lib/angular-sanitize/index.js",
+        "/home/daniel/Development/mercury/www/lib/angular-sanitize/angular-sanitize.js",
+        "/home/daniel/Development/mercury/www/lib/angular-chart.js/dist/angular-chart.min.js",
+        "/home/daniel/Development/mercury/www/lib/angular-chart.js/dist/angular-chart.js",
+        "/home/daniel/Development/mercury/www/lib/angular-chart.js/gulpfile.js",
+        "/home/daniel/Development/mercury/www/lib/angular-chart.js/angular-chart.js"
+    ]
+}
