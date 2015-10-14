@@ -39,6 +39,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'loginCtrl'
     })
 
+    .state('logout', {
+        url: '/logout',
+        onEnter: function ($state, accountSvc) {
+            accountSvc.logout();
+            $state.go('login');
+        }
+    })
+
     // setup an abstract state for the tabs directive
     .state('tab', {
         url: '/tab',
@@ -83,9 +91,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
     .state('tab.monitor', {
             url: '/monitor',
+            abstract: true,
             views: {
                 'tab-monitor': {
-                    templateUrl: 'monitor/monitor.html',
+                    templateUrl: 'monitor/monitor.html'
+                }
+            }
+        })
+        .state('tab.monitor.list', {
+            url: '/list',
+            views: {
+                'tab-monitor-inception': {
+                    templateUrl: 'monitor/monitor-list.html',
                     controller: 'monitorCtrl',
                     resolve: {
                         monitors: function (monitorSvc) {
@@ -95,10 +112,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 }
             }
         })
-        .state('tab.monitor-details', {
-            url: '/monitor/:storeID',
+        .state('tab.monitor.details', {
+            url: '/:storeID',
             views: {
-                'tab-monitor': {
+                'tab-monitor-inception': {
                     templateUrl: 'monitor/monitor-details.html',
                     controller: 'monitorDetailsCtrl',
                     resolve: {

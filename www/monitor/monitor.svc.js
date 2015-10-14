@@ -6,7 +6,7 @@ angular.module('starter.services')
     var svc = {};
     svc.getMonitors = function (forceRefresh) {
         if (monitor && !forceRefresh) {
-            var dfd = $q;
+            var dfd = $q.defer();
             dfd.resolve(monitor);
             return dfd.promise;
         } else {

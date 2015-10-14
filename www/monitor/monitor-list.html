@@ -1,0 +1,11 @@
+<ion-view view-title="Store Monitor">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="monitor in monitors" type="item-text-wrap" href="#/tab/monitor/{{monitor.storeID}}">
+                <h2>Store #{{monitor.storeID}}</h2>
+                <p>Last sync: {{monitor.lastSync | date: 'medium'}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
