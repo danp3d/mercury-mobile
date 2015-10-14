@@ -1,0 +1,22 @@
+<ion-view view-title="Store #{{monitor.storeID}}">
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                <h2>{{monitor.storeID}}</h2>
+                <p>Last sync: {{monitor.lastSync | date:'medium'}}</p>
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon ion-bag"></i> Last DR Trans: {{monitor.lastDRTrans | date:'medium'}}
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-pricetags-outline"></i> Last CR Trans: {{monitor.lastCRTrans | date:'medium'}}
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon ion-ios-cart-outline"></i> Last Inw. Goods: {{monitor.lastInwardsGoods | date:'medium'}}
+            </div>
+            <div class="item item-icon-left">
+                <i class="icon ion-cube"></i> Last Stock Trans: {{monitor.lastStockTrans | date:'medium'}}
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
