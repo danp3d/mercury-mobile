@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('authInterceptorSvc', function (tokenSvc) {
+.factory('authInterceptorSvc', function (tokenSvc, $location) {
     var svc = {};
 
     svc.request = function (config) {
@@ -13,6 +13,14 @@ angular.module('starter.services')
 
     svc.response = function (response) {
         return response;
+    };
+
+    svc.responseError = function (response) {
+        if (response.status === 401) {
+            tokenSvc.removeToken();
+            $location.path('/login');
+            return response;
+        }
     };
 
     return svc;

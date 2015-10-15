@@ -1,19 +1,17 @@
 angular.module('starter.controllers')
 
-.controller('whatsSellingCtrl', function ($scope, whatsSellingSvc) {
+.controller('mostLucrativeStoresCtrl', function ($scope, $filter, mostLucrativeStoresSvc) {
     $scope.showChart = true;
-    Chart.defaults.global.multiTooltipTemplate = function (valueObj) {
-        var newLbl = $scope.tooltips[$scope.labels.indexOf(valueObj.label)];
-        valueObj.label = newLbl || valueObj.label;
+    Chart.defaults.global.tooltipTemplate = function (valueObj) {
         if (valueObj.datasetLabel == 'Value') {
-            return valueObj.datasetLabel + ': $' + parseFloat(valueObj.value).toFixed(2);
+            return valueObj.datasetLabel + ': ' + $filter('currency')(parseFloat(valueObj.value));
         } else {
             return valueObj.datasetLabel + ': ' + parseFloat(valueObj.value).toFixed(2);
         }
     };
 
     $scope.reload = function (type) {
-        whatsSellingSvc.getReport(type).then(function (report) {
+        mostLucrativeStoresSvc.getReport(type).then(function (report) {
             $scope.report = report;
             $scope.type = report.type;
             if (!report.data || (report.data[0].length < 1)) {

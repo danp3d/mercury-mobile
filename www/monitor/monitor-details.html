@@ -1,22 +1,35 @@
 <ion-view view-title="Store #{{monitor.storeID}}">
     <ion-content>
         <div class="list card">
-            <div class="item item-avatar">
-                <img src="../img/shop.png">
-                <h2>{{monitor.storeID}}</h2>
-                <p>Last sync: {{monitor.lastSync | date:'medium'}}</p>
+            <div class="item item-thumbnail-left item-icon-right">
+                <img src="img/shop.png">
+                <h2><strong>Store #{{monitor.storeID}}</strong></h2>
+                <p>
+                    <strong>Last sync:</strong>
+                    <br/> {{monitor.lastSync | date:'medium'}}
+                </p>
+                <i class="icon" ng-class="getClassForDate(monitor.lastSync)"></i>
             </div>
-            <div class="item item-icon-left">
-                <i class="icon ion-bag"></i> Last DR Trans: {{monitor.lastDRTrans | date:'medium'}}
+            <div class="item item-icon-left item-icon-right">
+                <i class="icon ion-bag"></i>
+                <h3><strong>Last DR Trans:</strong></h3>
+                <p>{{monitor.lastDRTrans | date:'medium'}}</p>
+                <i class="icon" ng-class="getClassForDate(monitor.lastDRTrans)"></i>
             </div>
-            <div class="item item-icon-left">
-                <i class="icon ion-ios-pricetags-outline"></i> Last CR Trans: {{monitor.lastCRTrans | date:'medium'}}
+            <div class=" item item-icon-left item-icon-right">
+                <i class="icon ion-ios-cart-outline "></i>
+                <h3><strong>Last CR Trans:</strong></h3>
+                <p>{{monitor.lastCRTrans | date:'medium'}}</p>
             </div>
-            <div class="item item-icon-left">
-                <i class="icon ion-ios-cart-outline"></i> Last Inw. Goods: {{monitor.lastInwardsGoods | date:'medium'}}
+            <div class="item item-icon-left item-icon-right">
+                <i class="icon ion-ios-pricetags-outline "></i>
+                <h3><strong>Last Inw. Goods:</strong></h3>
+                <p>{{monitor.lastInwardsGoods | date:'medium'}}</p>
             </div>
-            <div class="item item-icon-left">
-                <i class="icon ion-cube"></i> Last Stock Trans: {{monitor.lastStockTrans | date:'medium'}}
+            <div class="item item-icon-left item-icon-right">
+                <i class="icon ion-cube "></i>
+                <h3><strong>Last Stock Trans:</strong></h3>
+                <p>{{monitor.lastStockTrans | date:'medium'}}</p>
             </div>
         </div>
     </ion-content>

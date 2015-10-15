@@ -1,6 +1,6 @@
 angular.module('starter.services')
 
-.factory('whatsSellingSvc', function ($http, $q, $ionicLoading, baseUrl, accountSvc) {
+.factory('mostLucrativeStoresSvc', function ($http, $q, $ionicLoading, baseUrl, accountSvc) {
     var report = null;
 
     var svc = {};
@@ -15,24 +15,21 @@ angular.module('starter.services')
             return accountSvc.getUser().then(function (usr) {
                 return $http({
                     method: 'GET',
-                    url: baseUrl + usr.companies[0] + '/WhatsSelling?type=' + type
+                    url: baseUrl + usr.companies[0] + '/MostLucrativeStores?type=' + type
                 });
             }).then(function (res) {
                 var raw = res.data.report.items
                 report = {
                     type: res.data.report.type,
                     labels: [],
-                    tooltips: [],
-                    data: [[], []],
-                    series: ['Value', 'Quantity']
+                    data: [[]],
+                    series: ['Value']
                 };
 
                 raw = raw.slice(0, 10);
                 raw.forEach(function (item) {
-                    report.labels.push(item.inventoryCD);
-                    report.tooltips.push(item.description);
+                    report.labels.push(item.storeID);
                     report.data[0].push(item.value);
-                    report.data[1].push(item.quantity);
                 });
 
                 report.raw = raw;

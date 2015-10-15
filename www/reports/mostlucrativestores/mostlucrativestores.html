@@ -1,9 +1,9 @@
-<ion-view view-title="What's Selling">
+<ion-view view-title="Most Lucrative Stores">
     <ion-content>
         <div class="list card">
             <div class="item item-thumbnail-left">
                 <img src="img/report.png">
-                <h2>What's Selling</h2>
+                <h2>Most Lucrative Stores</h2>
                 <div class="inset">
                     <div class="item tabs tabs-secondary tabs-icon-left">
                         <a class="tab-item" href="#" ng-click="reload('daily')" ng-class="{ 'tab-item-active': type == 'daily' }">Daily</a>
@@ -28,9 +28,9 @@
                     <p>No data to display</p>
                 </div>
             </div>
-            <div class="item" ng-hide="showChart || !report" ng-repeat="item in report.raw">
-                <h3>{{item.description}}</h3>
-                <p>{{item.inventoryCD + ' ' + item.subitemCD + ' - '}} <strong>{{(item.value.toFixed(2) | currency) + ' (' + item.quantity.toFixed(0) + ' items)'}}</strong></p>
+            <div class="item" ng-hide="showChart || !report" ng-repeat="store in report.raw">
+                <h3>{{store.storeID}}</h3>
+                <p>{{store.value.toFixed(2) | currency}}</p>
             </div>
         </div>
     </ion-content>

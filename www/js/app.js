@@ -59,36 +59,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     })
 
     // Each tab has its own nav history stack:
-
-    .state('tab.dash', {
-        url: '/dash',
-        views: {
-            'tab-dash': {
-                templateUrl: 'templates/tab-dash.html',
-                controller: 'DashCtrl'
-            }
-        }
-    })
-
-    .state('tab.chats', {
-            url: '/chats',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/tab-chats.html',
-                    controller: 'ChatsCtrl'
-                }
-            }
-        })
-        .state('tab.chat-detail', {
-            url: '/chats/:chatId',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/chat-detail.html',
-                    controller: 'ChatDetailCtrl'
-                }
-            }
-        })
-
     .state('tab.monitor', {
             url: '/monitor',
             abstract: true,
@@ -101,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         .state('tab.monitor.list', {
             url: '/list',
             views: {
-                'tab-monitor-inception': {
+                'tab-monitor@tab': {
                     templateUrl: 'monitor/monitor-list.html',
                     controller: 'monitorCtrl',
                     resolve: {
@@ -115,7 +85,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         .state('tab.monitor.details', {
             url: '/:storeID',
             views: {
-                'tab-monitor-inception': {
+                'tab-monitor@tab': {
                     templateUrl: 'monitor/monitor-details.html',
                     controller: 'monitorDetailsCtrl',
                     resolve: {
@@ -139,7 +109,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         .state('tab.report.list', {
             url: '/list',
             views: {
-                'tab-report-inception': {
+                'tab-report@tab': {
                     templateUrl: 'reports/report-list.html'
                 }
             }
@@ -147,9 +117,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         .state('tab.report.whatsselling', {
             url: '/whatsselling',
             views: {
-                'tab-report-inception': {
+                'tab-report@tab': {
                     templateUrl: 'reports/whatsselling/whatsselling.html',
                     controller: 'whatsSellingCtrl'
+                }
+            }
+        })
+        .state('tab.report.mostlucrativestores', {
+            url: '/mostlucrativestores',
+            views: {
+                'tab-report@tab': {
+                    templateUrl: 'reports/mostlucrativestores/mostlucrativestores.html',
+                    controller: 'mostLucrativeStoresCtrl'
                 }
             }
         })
@@ -165,6 +144,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/dash');
+    $urlRouterProvider.otherwise('/tab/report/list');
     $httpProvider.interceptors.push('authInterceptorSvc');
 });

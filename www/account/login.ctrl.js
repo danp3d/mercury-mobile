@@ -11,16 +11,25 @@ angular.module('starter.controllers')
             return null;
         }
 
-        accountSvc.login(email, pass).then(function (res) {
-            if (res) {
-                $state.go('tab.dash');
-            } else {
+        accountSvc.login(email, pass).then(
+            function (res) {
+                if (res) {
+                    $state.go('tab.report.list');
+                } else {
+                    $ionicLoading.show({
+                        template: 'Login failed',
+                        noBackdrop: true,
+                        duration: 2000
+                    });
+                }
+            },
+            function (err) {
                 $ionicLoading.show({
-                    templae: 'Login failed',
+                    template: 'Login failed: ' + JSON.stringify(err),
                     noBackdrop: true,
                     duration: 2000
                 });
             }
-        });
+        );
     };
 });

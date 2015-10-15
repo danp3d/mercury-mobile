@@ -1,9 +1,10 @@
 angular.module('starter.services')
 
-.factory('accountSvc', function ($http, $window, $q, baseUrl, tokenSvc) {
+.factory('accountSvc', function ($ionicLoading, $http, $window, $q, baseUrl, tokenSvc) {
     var usr = null;
     var svc = {};
     svc.login = function (email, pass) {
+        $ionicLoading.show();
         return $http({
             "method": 'POST',
             "url": baseUrl + 'login',
@@ -22,6 +23,8 @@ angular.module('starter.services')
 
             tokenSvc.removeToken();
             return false;
+        }).finally(function () {
+            $ionicLoading.hide();
         });
     };
 
